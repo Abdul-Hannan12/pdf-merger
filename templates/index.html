@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pdf Merger</title>
+  </head>
+  <body>
+    <div class="container">
+        <form action="/merge" method="post" enctype="multipart/form-data">
+            <input type="file" name="files" accept=".pdf" multiple>
+            <input type="submit" value="Merge">
+        </form>
+    </div>
+  </body>
+</html>
