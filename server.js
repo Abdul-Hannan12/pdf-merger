@@ -15,13 +15,15 @@ app.get('/', (req, res)=>{
 
 app.use('/static', express.static('public'));
 
-app.post('/merge', upload.array('pdfs'), (req, res, next)=>{
-    const pdfsArray = [];
+app.post('/merge', upload.array('pdfs'), async (req, res, next)=>{
+
+    let pdfsArray = [];
     for(file of req.files){
         pdfsArray.push(path.join(__dirname,file.path));
     }
-    const filename = mergePdfs(pdfsArray);
+    const filename = await mergePdfs(pdfsArray);
     res.redirect(`http://localhost:3000/static/${filename}.pdf`);
+
 });
 
 app.listen(port, ()=>{
