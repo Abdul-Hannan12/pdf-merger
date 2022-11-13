@@ -1,0 +1,28 @@
+{
+  "name": "pdf-merger",
+  "version": "1.0.0",
+  "description": "web app for merging pdfs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rocky-Khan/pdf-merger.git"
+  },
+  "keywords": [
+    "pdf",
+    "pdf",
+    "merger"
+  ],
+  "author": "Abdul Hannan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rocky-Khan/pdf-merger/issues"
+  },
+  "homepage": "https://github.com/Rocky-Khan/pdf-merger#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
