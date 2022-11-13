@@ -5,15 +5,23 @@ const app = express();
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'})
 
+const {mergePdfs} = require('./merge')
+
 const port = 3000;
 
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'templates/index.html'));
 });
 
-app.post('/merge', upload.array('pdfs', 2), (req, res, next)=>{
-    console.log(req.files);
-    res.send({data: req.files});
+app.use('/static', express.static('public'));
+
+app.post('/merge', upload.array('pdfs'), (req, res, next)=>{
+    const pdfsArray = [];
+    for(file of req.files){
+        pdfsArray.push(path.join(__dirname,file.path));
+    }
+    const filename = mergePdfs(pdfsArray);
+    res.redirect(`http://localhost:3000/static/${filename}.pdf`);
 });
 
 app.listen(port, ()=>{
