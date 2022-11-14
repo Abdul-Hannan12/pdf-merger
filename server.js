@@ -7,6 +7,11 @@ const upload = multer({dest: 'uploads/'})
 
 const {mergePdfs} = require('./merge')
 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
 const port = 3000;
 
 app.get('/', (req, res)=>{
@@ -14,6 +19,8 @@ app.get('/', (req, res)=>{
 });
 
 app.use('/static', express.static('public'));
+app.use('/static/libs', express.static('templates/assets/libs'));
+app.use('/static/js', express.static('templates/assets/js'));
 
 app.post('/merge', upload.array('pdfs'), async (req, res, next)=>{
 
@@ -22,7 +29,7 @@ app.post('/merge', upload.array('pdfs'), async (req, res, next)=>{
         pdfsArray.push(path.join(__dirname,file.path));
     }
     const filename = await mergePdfs(pdfsArray);
-    res.redirect(`http://localhost:3000/static/${filename}.pdf`);
+    res.send(`{"filename": "${filename}"}`);
 
 });
 

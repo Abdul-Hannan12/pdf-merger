@@ -1,28 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pdf Merger</title>
-    <script src="templetes/assets/libs/jquery-3.4.1.min.js"></script>
-    <script src="templetes/assets/libs/jquery.form.js"></script>
-    <script src="templetes/assets/libs/sweetalert.min.js"></script>
+    <script src="static/libs/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="static/libs/jquery.form.js" type="application/javascript"></script>
+    <script src="static/libs/sweetalert.min.js" type="application/javascript"></script>
   </head>
   <body>
     <div class="container">
-        <form action="/merge" method="post" enctype="multipart/form-data" id="form">
-            <input id="pdf" type="file" name="pdfs" accept=".pdf" multiple>
-            <input type="submit" value="Merge">
-        </form>
+      <form id="form" action="/merge" method="post" enctype="multipart/form-data">
+        <input id="pdf" type="file" name="pdfs" accept=".pdf" multiple>
+        <input type="submit" value="Merge">
+      </form>
     </div>
-    <script>
-      $('#form').ajaxForm(function(result){
-          if ($(#pdf).val() == ""){
-            alert("please insert file(s)");
-          } else {
-            console.log(result);
-          }
-      });
-    </script>
+    <script src="static/js/ajax.js"></script>
   </body>
 </html>
